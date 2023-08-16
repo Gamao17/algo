@@ -32,7 +32,7 @@ BEGIN
         IF (phrase[i] NOT ' ') THEN
             nb_mot := 1;
 
-            ELSE_IF (phrase[i] == ' ') THEN
+            ELSE_IF (phrase[i] == ' ' AND phrase[i-1] NOT ' ') THEN
                 nb_mot := nb_mot + 1;
         END_IF
 
