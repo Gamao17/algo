@@ -1,0 +1,47 @@
+
+/*
+1- Nous devons écrire un programme qui lit une phrase, compte le nombre de caractères, renvoit le nombre de mots et de voyelles
+2- Plusieurs contraintes se présentent alors : la phrase doit comporter au minimum 2 caractères sans compter le point; elle doit absolument finir par un point; le dernier caractère avant le point n'est pas un espace;
+3- Nous devons recueillir les données d'entrées
+4- le programme retourne le nombre de caractère, de mots et de voyelles
+5- le programme demande à l''utilisateur de saisir une phrase. Tant qu'il n'aura pas entré de données valides,
+le programme demandera de resaisir une phrase correcte. 
+Si la condition est vérifiée, le programme retourne le nombre de caractères. 
+le nombre de mots est ensuite calculer : s'il n'existe aucun espace entre les caractère le programmr retourne "un seul mot" 
+sinon il calcul le nombre d'espace est ajoute car il y a toujours un mot avant le premier espace.
+le nombre de voyelle est ensuite calculer : à chaque fois que le programme rencontre une voyelle, il ajoute 1 au compteur de voyelles
+*/
+
+ALGORITHM character_reader
+VAR
+    phrase : STRING;
+    long, nb_mot, nb_voy : INTEGER;
+BEGIN
+    write('ecrire une phrase qui fini par un point')
+
+  REPEAT
+    write('votre phrase n''est pas correct, veuillez respect les règle citées précédemment')
+    read(phrase)
+    long := length(phrase);
+  UNTIL ((long > 3) AND (phrase[long] == '.') AND (phrase[long - 1]) NOT ' ')
+
+    long := long - 1 ;
+
+    FOR i FROM 0 TO long STEP 1  DO
+ 
+        IF (phrase[i] NOT ' ') THEN
+            nb_mot := 1;
+
+            ELSE_IF (phrase[i] == ' ') THEN
+                nb_mot := nb_mot + 1;
+        END_IF
+
+        IF (phrase[i] == 'a' OR phrase[i] =='e' OR phrase[i] == 'i' OR phrase[i] == 'o' OR phrase[i] == 'u' OR phrase[i] == 'y' OR phrase[i] == 'A' OR phrase[i] == 'E' OR phrase[i] == 'I' OR phrase[i] == 'O' OR phrase[i] == 'U' OR phrase[i] == 'Y') THEN
+            nb_voy = nb_voy + 1;
+        END_IF
+    END_FOR
+
+    write('le nombre de caractère est de : 'long)
+    write('le nombre de mot est de : 'nb_mot)
+    write('le nombre de voyelle est de : 'nb_voy)
+END
