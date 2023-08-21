@@ -1,0 +1,53 @@
+ALGORITHM sum_distinct_elements
+VAR
+    tab1 :  ARRAY_OF INTEGER[5];
+    tab2 :  ARRAY_OF INTEGER[5];
+    distinct : ARRAY_OF INTEGER[11];
+    sum, i, j, k : INTEGER;
+
+
+BEGIN
+// Saisie manuelle des valeurs par l'utilisateurs
+    write('veuillez saisir les six premier chiffres')
+        FOR i FROM 0 TO tab1.strengt-1 STEP 1  DO
+            read(tab1[i])
+            END_IF
+        END_FOR
+
+    write('veuillez saisir les six autres chiffres')
+        FOR j FROM 0 TO tab2.strengt-1 STEP 1  DO
+            read(tab2[j])
+            END_IF
+        END_FOR
+
+// initialisation des compteurs à 0
+    i, j, k, sum := 0;
+
+// comparaison une par une des valeurs du premier tableau à toutes les valeurs du second
+//et stockage des éléments distincts dans le tableau distinct[]
+FOR i FROM 0 TO tab1.strengt-1 STEP 1  DO
+        IF (tab1[i] NOT IN tab2) THEN
+            sum := sum + tab1[i];
+            distinct[k] := tab1[i];
+            k := k+1;
+        END_IF
+    END_FOR
+
+// même instruction mais inversement
+FOR j FROM 0 TO tab2.strengt-1 STEP 1  DO
+        IF (tab2[j] NOT IN tab1) THEN
+            sum = sum + tab2[j];
+            distinct[k] := tab2[j];
+            k := k+1;
+        END_IF 
+    END_FOR
+
+// Affichage des élement disctincts de l'ensemble
+    write('Voici les éléments disctincts de l''ensemble des 2 tableaux : ')
+        FOR k FROM 0 TO distinct.strengt-1 STEP 1  DO
+            write(distinct[k])
+        END_FOR
+    
+    write('la somme des élements distinct est ' sum)
+
+END
